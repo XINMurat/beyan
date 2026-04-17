@@ -1,0 +1,42 @@
+[
+  {
+    "role": "system",
+    "content": "Beyan Agentic Loop. Follow checkpoint protocol."
+  },
+  {
+    "role": "user",
+    "content": "start"
+  },
+  {
+    "role": "assistant",
+    "content": "CHECKPOINT: Do something"
+  },
+  {
+    "role": "assistant",
+    "content": "CHECKPOINT: Step 1"
+  },
+  {
+    "role": "user",
+    "content": "yes"
+  },
+  {
+    "role": "assistant",
+    "content": "CHECKPOINT: Step 1"
+  },
+  {
+    "role": "assistant",
+    "content": "Final report. No checkpoints."
+  },
+  {
+    "role": "assistant",
+    "content": "CHECKPOINT: Do something"
+  },
+  {
+    "role": "assistant",
+    "content": "CHECKPOINT: Step 1"
+  },
+  {
+    "role": "user",
+    "content": "yes"
+  }
+]

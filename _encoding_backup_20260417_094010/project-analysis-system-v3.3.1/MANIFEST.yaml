@@ -1,0 +1,411 @@
+# Project Analysis System - Module Manifest v3.3.1
+# Updated with implementation guides organization
+
+version: "3.3.1"
+base_prompt: "BASE_PROMPT.md"
+base_token_count: 5000
+max_total_tokens: 30000
+
+# Module Catalog (30 modules total)
+modules:
+  # P0 - CRITICAL (Load almost always)
+  project_intelligence:
+    path: "modules/specialized/project-intelligence.md"
+    tokens: 5000
+    priority: P0
+    auto_load: false
+    load_on_request: true
+    dependencies: []
+    tags: [meta, orchestrator, auto-analysis, intelligence]
+    version: "1.0.0"
+    description: "Meta-orchestrator that analyzes projects and recommends modules"
+  
+  file_structure_analysis:
+    path: "modules/core/file-structure-analysis.md"
+    tokens: 2000
+    priority: P0
+    auto_load: true
+    dependencies: []
+    tags: [core, structure, organization]
+    version: "1.0.0"
+    
+  performance_analysis:
+    path: "modules/core/performance-analysis.md"
+    tokens: 2500
+    priority: P0
+    auto_load_if: ["web_app", "api", "mobile_app"]
+    dependencies: []
+    tags: [performance, optimization, web-vitals]
+    version: "1.0.0"
+    
+  ui_ux_analysis:
+    path: "modules/core/ui-ux-analysis.md"
+    tokens: 3000
+    priority: P0
+    auto_load_if: ["web_app", "mobile_app", "spa"]
+    dependencies: []
+    recommends: ["accessibility_analysis"]
+    tags: [ui, ux, frontend, design]
+    version: "1.0.0"
+  
+  security_analysis:
+    path: "modules/core/security-analysis.md"
+    tokens: 2800
+    priority: P0
+    auto_load_if: ["production", "handles_pii", "financial"]
+    dependencies: []
+    tags: [security, vulnerabilities, auth]
+    version: "1.0.0"
+
+  # P1 - HIGH (Load based on project type)
+  api_design_analysis:
+    path: "modules/core/api-design-analysis.md"
+    tokens: 2000
+    priority: P1
+    auto_load_if: ["api", "backend", "microservices"]
+    dependencies: []
+    recommends: ["security_analysis"]
+    tags: [api, rest, graphql, backend]
+    version: "1.0.0"
+    
+  database_analysis:
+    path: "modules/core/database-analysis.md"
+    tokens: 2500
+    priority: P1
+    auto_load_if: ["backend", "fullstack", "data_intensive"]
+    dependencies: []
+    recommends: ["performance_analysis"]
+    tags: [database, sql, queries, schema]
+    version: "1.0.0"
+    
+  developer_experience:
+    path: "modules/core/developer-experience.md"
+    tokens: 1800
+    priority: P1
+    auto_load_if: ["team_size_gt_3"]
+    dependencies: []
+    tags: [dx, tooling, workflow]
+    version: "1.0.0"
+  
+  test_generation:
+    path: "modules/testing/test-generation.md"
+    tokens: 4000
+    priority: P1
+    auto_load_if: ["low_test_coverage", "test_request"]
+    dependencies: []
+    recommends: ["ui_interaction_test", "collaboration_test"]
+    tags: [testing, bdd, test-gen, gherkin, jest, xunit, pytest]
+    version: "1.0.0"
+    description: "Generates BDD-style test scenarios and executable tests"
+  
+  ui_interaction_test:
+    path: "modules/testing/ui-interaction-test.md"
+    tokens: 4500
+    priority: P1
+    auto_load_if: ["visual_builder", "canvas", "drag_drop", "ui_request"]
+    dependencies: []
+    recommends: ["test_generation"]
+    tags: [testing, ui, cypress, playwright, interaction]
+    version: "1.0.0"
+    description: "Generic UI interaction testing for visual builders and UI apps"
+  
+  collaboration_test:
+    path: "modules/testing/collaboration-test.md"
+    tokens: 3500
+    priority: P1
+    auto_load_if: ["websocket", "signalr", "real_time", "collaboration"]
+    dependencies: []
+    recommends: ["ui_interaction_test", "performance_analysis"]
+    tags: [testing, collaboration, websocket, multi-user, real-time]
+    version: "1.0.0"
+    description: "Real-time collaboration and multi-user testing"
+  
+  hidden_gems_deep_scan:
+    path: "modules/specialized/hidden-gems-deep-scan.md"
+    tokens: 2500
+    priority: P1
+    auto_load: false
+    dependencies: ["file_structure_analysis"]
+    tags: [code-quality, zombie-code, bus-factor, technical-debt]
+    version: "1.0.0"
+  
+  ai_assisted_dev_analysis:
+    path: "modules/specialized/ai-assisted-dev-analysis.md"
+    tokens: 2500
+    priority: P1
+    auto_load_if: ["trae_ide", "cursor", "copilot"]
+    dependencies: []
+    tags: [ai, code-gen, automation, hallucination]
+    version: "1.0.0"
+  
+  feature_gap_analysis:
+    path: "modules/specialized/feature-gap-analysis.md"
+    tokens: 2500
+    priority: P2
+    auto_load: false
+    dependencies: []
+    load_on_request: true
+    tags: [competitive-analysis, benchmarking, features, roadmap]
+    version: "1.0.0"
+    description: "Analyzes feature completeness vs industry standards"
+
+  # P2 - MEDIUM (Load on explicit request)
+  accessibility_analysis:
+    path: "modules/core/accessibility-analysis.md"
+    tokens: 2200
+    priority: P2
+    auto_load: false
+    dependencies: []
+    requires_with: ["ui_ux_analysis"]
+    tags: [a11y, wcag, accessibility]
+    version: "1.0.0"
+    
+  internationalization_analysis:
+    path: "modules/core/i18n-analysis.md"
+    tokens: 1500
+    priority: P2
+    auto_load: false
+    dependencies: []
+    tags: [i18n, l10n, localization]
+    version: "1.0.0"
+    
+  testing_strategy:
+    path: "modules/testing/testing-strategy.md"
+    tokens: 2000
+    priority: P2
+    auto_load_if: ["mature_project", "production"]
+    dependencies: []
+    tags: [testing, qa, coverage, strategy]
+    version: "1.0.0"
+    
+  state_management_analysis:
+    path: "modules/core/state-management.md"
+    tokens: 1800
+    priority: P2
+    auto_load_if: ["react", "vue", "spa"]
+    dependencies: []
+    tags: [state, redux, context, zustand]
+    version: "1.0.0"
+  
+  monitoring_observability:
+    path: "modules/core/monitoring-observability.md"
+    tokens: 2000
+    priority: P2
+    auto_load: false
+    dependencies: []
+    tags: [monitoring, logging, observability]
+    version: "1.0.0"
+  
+  code_quality_patterns:
+    path: "modules/core/code-quality-patterns.md"
+    tokens: 1800
+    priority: P2
+    auto_load: false
+    dependencies: []
+    tags: [code-quality, patterns, best-practices]
+    version: "1.0.0"
+
+  # P3 - OPTIONAL
+  mobile_responsive_analysis:
+    path: "modules/core/mobile-responsive.md"
+    tokens: 800
+    priority: P3
+    auto_load: false
+    dependencies: []
+    tags: [mobile, responsive, breakpoints]
+    version: "1.0.0"
+    
+  browser_compatibility:
+    path: "modules/core/browser-compatibility.md"
+    tokens: 600
+    priority: P3
+    auto_load: false
+    dependencies: []
+    tags: [browser, compatibility, cross-browser]
+    version: "1.0.0"
+    
+  seo_analysis:
+    path: "modules/core/seo-analysis.md"
+    tokens: 800
+    priority: P3
+    auto_load: false
+    dependencies: []
+    tags: [seo, meta-tags, sitemap]
+    version: "1.0.0"
+    
+  analytics_analysis:
+    path: "modules/core/analytics-analysis.md"
+    tokens: 400
+    priority: P3
+    auto_load: false
+    dependencies: []
+    tags: [analytics, tracking, metrics]
+    version: "1.0.0"
+    
+  infrastructure_analysis:
+    path: "modules/core/infrastructure.md"
+    tokens: 1500
+    priority: P3
+    auto_load: false
+    dependencies: []
+    tags: [infrastructure, deployment, ci-cd]
+    version: "1.0.0"
+
+  # SPECIALIZED (Tech/Domain specific)
+  turkish_market_specifics:
+    path: "modules/specialized/turkish-market.md"
+    tokens: 1500
+    priority: P2
+    auto_load_if: ["turkish", "turkey", "tr"]
+    dependencies: []
+    tags: [turkish, localization, compliance, kvkk]
+    version: "1.0.0"
+    
+  umt_architecture_analysis:
+    path: "modules/specialized/umt-architecture.md"
+    tokens: 2000
+    priority: P1
+    auto_load_if: ["umt", "table-driven", "data-driven"]
+    dependencies: []
+    tags: [umt, architecture, table-driven]
+    version: "1.0.0"
+    
+  dotnet_core_analysis:
+    path: "modules/specialized/dotnet-core.md"
+    tokens: 1800
+    priority: P1
+    auto_load_if: [".csproj", "asp.net", "entity-framework"]
+    dependencies: []
+    tags: [dotnet, csharp, backend]
+    version: "1.0.0"
+    
+  react_typescript_analysis:
+    path: "modules/specialized/react-typescript.md"
+    tokens: 2000
+    priority: P1
+    auto_load_if: ["react", "typescript", "tsx"]
+    dependencies: []
+    tags: [react, typescript, frontend]
+    version: "1.0.0"
+  
+  refactoring_guide:
+    path: "modules/core/refactoring-guide.md"
+    tokens: 600
+    priority: P2
+    auto_load: false
+    dependencies: []
+    tags: [refactoring, code-smells, patterns]
+    version: "1.0.0"
+  
+  algo_complete:
+    path: "ALGO-COMPLETE.md"
+    tokens: 8000
+    priority: P1
+    auto_load: false
+    load_on_request: true
+    dependencies: []
+    recommends: ["test_generation", "performance_analysis", "code_quality_patterns"]
+    tags: [testing, algorithm, validation, mathematical, statistical, property-based]
+    version: "2.0.0"
+    description: "Comprehensive algorithm testing and validation with property-based testing"
+
+# Request Pattern Recognition
+request_patterns:
+  "feature gap": ["feature_gap_analysis"]
+  "compare features": ["feature_gap_analysis"]
+  "competitive analysis": ["feature_gap_analysis"]
+  "what features missing": ["feature_gap_analysis"]
+  "benchmark": ["feature_gap_analysis"]
+  
+  "test": ["test_generation", "testing_strategy"]
+  "testing": ["test_generation", "testing_strategy"]
+  "test coverage": ["test_generation"]
+  "generate tests": ["test_generation"]
+  "bdd": ["test_generation"]
+  
+  "ui test": ["ui_interaction_test"]
+  "cypress": ["ui_interaction_test"]
+  "playwright": ["ui_interaction_test"]
+  "visual builder": ["ui_interaction_test"]
+  "drag drop": ["ui_interaction_test"]
+  "canvas": ["ui_interaction_test"]
+  
+  "collaboration": ["collaboration_test"]
+  "real-time": ["collaboration_test"]
+  "websocket": ["collaboration_test"]
+  "multi-user": ["collaboration_test"]
+  
+  "project intel": ["project_intelligence"]
+  "auto analysis": ["project_intelligence"]
+  "recommend modules": ["project_intelligence"]
+  "what modules": ["project_intelligence"]
+  
+  "algo": ["algo_complete"]
+  "algorithm": ["algo_complete"]
+  "algorithm test": ["algo_complete"]
+  "algorithm validation": ["algo_complete"]
+  "property based": ["algo_complete"]
+  "mathematical": ["algo_complete"]
+
+# Module Groups for Common Scenarios
+module_groups:
+  testing_full:
+    modules: ["test_generation", "ui_interaction_test", "collaboration_test", "testing_strategy"]
+    description: "Complete testing analysis suite"
+    total_tokens: 14000
+  
+  quality_focus:
+    modules: ["test_generation", "ai_assisted_dev_analysis", "hidden_gems_deep_scan", "refactoring_guide"]
+    description: "Code quality and testing focus"
+    total_tokens: 10500
+  
+  ui_complete:
+    modules: ["ui_interaction_test", "accessibility_analysis", "mobile_responsive_analysis", "browser_compatibility"]
+    description: "Complete UI testing and compatibility"
+    total_tokens: 8000
+  
+  collaboration_suite:
+    modules: ["collaboration_test", "ui_interaction_test", "performance_analysis"]
+    description: "Collaboration features testing"
+    total_tokens: 10500
+  
+  algorithm_validation:
+    modules: ["algo_complete", "test_generation", "performance_analysis"]
+    description: "Mathematical algorithm validation suite"
+    total_tokens: 14500
+
+# Preset Combinations (shortcuts)
+presets:
+  BASIC: ["file_structure_analysis", "security_analysis", "performance_analysis"]
+  FULLSTACK: ["file_structure_analysis", "security_analysis", "performance_analysis", "api_design_analysis", "database_analysis", "ui_ux_analysis", "developer_experience"]
+  TEST-FULL: ["test_generation", "ui_interaction_test", "collaboration_test", "testing_strategy"]
+  QUALITY: ["test_generation", "ai_assisted_dev_analysis", "hidden_gems_deep_scan", "refactoring_guide"]
+  UI-COMPLETE: ["ui_interaction_test", "accessibility_analysis", "mobile_responsive_analysis", "browser_compatibility", "ui_ux_analysis"]
+  ALGO-SUITE: ["algo_complete", "test_generation", "performance_analysis"]
+  E2E-SUITE: ["test_generation", "ui_interaction_test", "collaboration_test", "testing_strategy"]
+
+# Implementation Guides (Step-by-step fix guides)
+implementation_guides:
+  security_fixes:
+    path: "implementation-guides/security-fixes.md"
+    related_module: "security_analysis"
+    description: "Step-by-step guide to fix security issues (SQL injection, secrets, authorization, etc.)"
+    topics: ["SQL injection", "exposed secrets", "authorization", "CORS", "password hashing"]
+  
+  performance_optimization:
+    path: "implementation-guides/performance-optimization.md"
+    related_module: "performance_analysis"
+    description: "Step-by-step guide to optimize performance (bundle size, images, N+1 queries, etc.)"
+    topics: ["bundle size", "image optimization", "N+1 queries", "database indexes", "caching"]
+  
+  accessibility_fixes:
+    path: "implementation-guides/accessibility-fixes.md"
+    related_module: "accessibility_analysis"
+    description: "Step-by-step guide to fix accessibility issues (alt text, contrast, keyboard navigation)"
+    topics: ["alt text", "color contrast", "keyboard navigation", "ARIA labels"]
+  
+  database_migration:
+    path: "implementation-guides/database-migration.md"
+    related_module: "database_analysis"
+    description: "Safe database migration strategy (backup, staging, rollback, production)"
+    topics: ["migration safety", "backup", "rollback", "staging tests"]

@@ -1,0 +1,724 @@
+version: 2.0.0
+base_prompt: core_prompts/{lang}/BASE_PROMPT.md
+orchestrator_prompt: core_prompts/{lang}/ORCHESTRATOR_PROMPT.md
+max_total_tokens: 48000
+default_model:
+  anthropic: claude-sonnet-4-6
+  openai: gpt-4o
+default_temperature: 0.2
+languages:
+- tr
+- en
+modules:
+  os_firmware:
+    path: modules/domains/{lang}/os-firmware.md
+    priority: P1
+    auto_load_if:
+    - c
+    - cpp
+    - makefile
+    - cmake
+    - firmware
+    - kernel
+    tags:
+    - domain
+    - system
+    - os
+    - c
+  blockchain_web3:
+    path: modules/domains/{lang}/blockchain-web3.md
+    priority: P1
+    auto_load_if:
+    - sol
+    - solidity
+    - hardhat
+    - truffle
+    - web3
+    - smart-contract
+    tags:
+    - domain
+    - blockchain
+    - web3
+    - crypto
+  ai_research:
+    path: modules/domains/{lang}/ai-research.md
+    priority: P1
+    auto_load_if:
+    - ipynb
+    - pytorch
+    - tensorflow
+    - keras
+    - model
+    - training
+    tags:
+    - domain
+    - ai
+    - ml
+    - data-science
+  devops_infra:
+    path: modules/domains/{lang}/devops-infra.md
+    priority: P1
+    auto_load_if:
+    - dockerfile
+    - docker-compose
+    - kubernetes
+    - terraform
+    - ansible
+    - k8s
+    - infrastructure
+    - terraform
+    - helm
+    - devops
+    tags:
+    - domain
+    - devops
+    - infrastructure
+    - cloud
+  data_pipeline:
+    path: modules/domains/{lang}/data-pipeline.md
+    priority: P1
+    auto_load_if:
+    - airflow
+    - dbt
+    - spark
+    - hadoop
+    - kafka
+    - etl
+    - database
+    - sql
+    - prisma
+    - drizzle
+    tags:
+    - domain
+    - data
+    - etl
+    - pipeline
+  web_mobile:
+    path: modules/domains/{lang}/web-mobile.md
+    priority: P1
+    auto_load_if:
+    - package.json
+    - react
+    - angular
+    - vue
+    - node
+    - swift
+    - kotlin
+    - flutter
+    - react-native
+    - mobile
+    - go
+    - rust
+    - php-laravel
+    - artisan
+    tags:
+    - domain
+    - web
+    - mobile
+    - frontend
+    - backend
+  legacy_migration:
+    path: modules/domains/{lang}/legacy-migration.md
+    priority: P2
+    auto_load_if:
+    - cobol
+    - fortran
+    - vb6
+    - migration
+    tags:
+    - domain
+    - legacy
+    - refactor
+  security_audit:
+    path: modules/focus/{lang}/security-audit.md
+    priority: P2
+    auto_load_if:
+    - security
+    - audit
+    - auth
+    - jwt
+    - oauth
+    tags:
+    - focus
+    - security
+    - owasp
+  performance_audit:
+    path: modules/focus/{lang}/performance-audit.md
+    priority: P2
+    auto_load_if:
+    - performance
+    - optimization
+    - speed
+    - memory
+    tags:
+    - focus
+    - performance
+    - optimization
+  compliance_audit:
+    path: modules/focus/{lang}/compliance-audit.md
+    priority: P2
+    auto_load_if:
+    - gdpr
+    - kvkk
+    - compliance
+    - privacy
+    - hipaa
+    tags:
+    - focus
+    - compliance
+    - legal
+  api_audit:
+    path: modules/focus/{lang}/api-audit.md
+    priority: P2
+    auto_load_if:
+    - swagger
+    - openapi
+    - graphql
+    - rest
+    - api
+    tags:
+    - focus
+    - api
+    - design
+  project_intelligence:
+    path: modules/specialized/{lang}/project-intelligence.md
+    tokens: 5000
+    priority: P0
+    auto_load: false
+    load_on_request: true
+    dependencies: []
+    tags:
+    - meta
+    - orchestrator
+    - auto-analysis
+    - intelligence
+    version: 1.0.0
+    description: Meta-orchestrator that analyzes projects and recommends modules
+  file_structure_analysis:
+    path: modules/core/{lang}/file-structure-analysis.md
+    tokens: 2000
+    priority: P0
+    auto_load: true
+    dependencies: []
+    tags:
+    - core
+    - structure
+    - organization
+    version: 1.0.0
+  performance_analysis:
+    path: modules/core/{lang}/performance-analysis.md
+    tokens: 2500
+    priority: P0
+    auto_load_if:
+    - web_app
+    - api
+    - mobile_app
+    dependencies: []
+    tags:
+    - performance
+    - optimization
+    - web-vitals
+    version: 1.0.0
+  ui_ux_analysis:
+    path: modules/core/{lang}/ui-ux-analysis.md
+    tokens: 3000
+    priority: P0
+    auto_load_if:
+    - web_app
+    - mobile_app
+    - spa
+    dependencies: []
+    recommends:
+    - accessibility_analysis
+    tags:
+    - ui
+    - ux
+    - frontend
+    - design
+    version: 1.0.0
+  security_analysis:
+    path: modules/core/{lang}/security-analysis.md
+    tokens: 2800
+    priority: P0
+    auto_load_if:
+    - production
+    - handles_pii
+    - financial
+    dependencies: []
+    tags:
+    - security
+    - vulnerabilities
+    - auth
+    version: 1.0.0
+  api_design_analysis:
+    path: modules/core/{lang}/api-design-analysis.md
+    tokens: 2000
+    priority: P1
+    auto_load_if:
+    - api
+    - backend
+    - microservices
+    dependencies: []
+    recommends:
+    - security_analysis
+    tags:
+    - api
+    - rest
+    - graphql
+    - backend
+    version: 1.0.0
+  database_analysis:
+    path: modules/core/{lang}/database-analysis.md
+    tokens: 2500
+    priority: P1
+    auto_load_if:
+    - backend
+    - fullstack
+    - data_intensive
+    dependencies: []
+    recommends:
+    - performance_analysis
+    tags:
+    - database
+    - sql
+    - queries
+    - schema
+    version: 1.0.0
+  developer_experience:
+    path: modules/core/{lang}/developer-experience.md
+    tokens: 1800
+    priority: P1
+    auto_load_if:
+    - team_size_gt_3
+    dependencies: []
+    tags:
+    - dx
+    - tooling
+    - workflow
+    version: 1.0.0
+  test_generation:
+    path: modules/testing/{lang}/test-generation.md
+    tokens: 4000
+    priority: P1
+    auto_load_if:
+    - low_test_coverage
+    - test_request
+    dependencies: []
+    recommends:
+    - ui_interaction_test
+    - collaboration_test
+    tags:
+    - testing
+    - bdd
+    - test-gen
+    - gherkin
+    - jest
+    - xunit
+    - pytest
+    version: 1.0.0
+    description: Generates BDD-style test scenarios and executable tests
+  ui_interaction_test:
+    path: modules/testing/{lang}/ui-interaction-test.md
+    tokens: 4500
+    priority: P1
+    auto_load_if:
+    - visual_builder
+    - canvas
+    - drag_drop
+    - ui_request
+    dependencies: []
+    recommends:
+    - test_generation
+    tags:
+    - testing
+    - ui
+    - cypress
+    - playwright
+    - interaction
+    version: 1.0.0
+    description: Generic UI interaction testing for visual builders and UI apps
+  collaboration_test:
+    path: modules/testing/{lang}/collaboration-test.md
+    tokens: 3500
+    priority: P1
+    auto_load_if:
+    - websocket
+    - signalr
+    - real_time
+    - collaboration
+    dependencies: []
+    recommends:
+    - ui_interaction_test
+    - performance_analysis
+    tags:
+    - testing
+    - collaboration
+    - websocket
+    - multi-user
+    - real-time
+    version: 1.0.0
+    description: Real-time collaboration and multi-user testing
+  hidden_gems_deep_scan:
+    path: modules/specialized/{lang}/hidden-gems-deep-scan.md
+    tokens: 2500
+    priority: P1
+    auto_load: false
+    dependencies:
+    - file_structure_analysis
+    tags:
+    - code-quality
+    - zombie-code
+    - bus-factor
+    - technical-debt
+    version: 1.0.0
+  ai_assisted_dev_analysis:
+    path: modules/specialized/{lang}/ai-assisted-dev-analysis.md
+    tokens: 2500
+    priority: P1
+    auto_load_if:
+    - trae_ide
+    - cursor
+    - copilot
+    dependencies: []
+    tags:
+    - ai
+    - code-gen
+    - automation
+    - hallucination
+    version: 1.0.0
+  feature_gap_analysis:
+    path: modules/specialized/{lang}/feature-gap-analysis.md
+    tokens: 2500
+    priority: P2
+    auto_load: false
+    dependencies: []
+    load_on_request: true
+    tags:
+    - competitive-analysis
+    - benchmarking
+    - features
+    - roadmap
+    version: 1.0.0
+    description: Analyzes feature completeness vs industry standards
+  accessibility_analysis:
+    path: modules/core/{lang}/accessibility-analysis.md
+    tokens: 2200
+    priority: P2
+    auto_load: false
+    dependencies: []
+    requires_with:
+    - ui_ux_analysis
+    tags:
+    - a11y
+    - wcag
+    - accessibility
+    version: 1.0.0
+  internationalization_analysis:
+    path: modules/core/{lang}/i18n-analysis.md
+    tokens: 1500
+    priority: P2
+    auto_load: false
+    dependencies: []
+    tags:
+    - i18n
+    - l10n
+    - localization
+    version: 1.0.0
+  testing_strategy:
+    path: modules/testing/{lang}/testing-strategy.md
+    tokens: 2000
+    priority: P2
+    auto_load_if:
+    - mature_project
+    - production
+    dependencies: []
+    tags:
+    - testing
+    - qa
+    - coverage
+    - strategy
+    version: 1.0.0
+  state_management_analysis:
+    path: modules/core/{lang}/state-management.md
+    tokens: 1800
+    priority: P2
+    auto_load_if:
+    - react
+    - vue
+    - spa
+    dependencies: []
+    tags:
+    - state
+    - redux
+    - context
+    - zustand
+    version: 1.0.0
+  monitoring_observability:
+    path: modules/core/{lang}/monitoring-observability.md
+    tokens: 2000
+    priority: P2
+    auto_load: false
+    dependencies: []
+    tags:
+    - monitoring
+    - logging
+    - observability
+    version: 1.0.0
+  code_quality_patterns:
+    path: modules/core/{lang}/code-quality-patterns.md
+    tokens: 1800
+    priority: P2
+    auto_load: false
+    dependencies: []
+    tags:
+    - code-quality
+    - patterns
+    - best-practices
+    version: 1.0.0
+  mobile_responsive_analysis:
+    path: modules/core/{lang}/mobile-responsive.md
+    tokens: 800
+    priority: P3
+    auto_load: false
+    dependencies: []
+    tags:
+    - mobile
+    - responsive
+    - breakpoints
+    version: 1.0.0
+  browser_compatibility:
+    path: modules/core/{lang}/browser-compatibility.md
+    tokens: 600
+    priority: P3
+    auto_load: false
+    dependencies: []
+    tags:
+    - browser
+    - compatibility
+    - cross-browser
+    version: 1.0.0
+  seo_analysis:
+    path: modules/core/{lang}/seo-analysis.md
+    tokens: 800
+    priority: P3
+    auto_load: false
+    dependencies: []
+    tags:
+    - seo
+    - meta-tags
+    - sitemap
+    version: 1.0.0
+  analytics_analysis:
+    path: modules/core/{lang}/analytics-analysis.md
+    tokens: 400
+    priority: P3
+    auto_load: false
+    dependencies: []
+    tags:
+    - analytics
+    - tracking
+    - metrics
+    version: 1.0.0
+  infrastructure_analysis:
+    path: modules/core/{lang}/infrastructure.md
+    tokens: 1500
+    priority: P3
+    auto_load: false
+    dependencies: []
+    tags:
+    - infrastructure
+    - deployment
+    - ci-cd
+    version: 1.0.0
+  turkish_market_specifics:
+    path: modules/specialized/{lang}/turkish-market.md
+    tokens: 1500
+    priority: P2
+    auto_load_if:
+    - turkish
+    - turkey
+    - tr
+    dependencies: []
+    tags:
+    - turkish
+    - localization
+    - compliance
+    - kvkk
+    version: 1.0.0
+  dotnet_core_analysis:
+    path: modules/specialized/{lang}/dotnet-core.md
+    tokens: 1800
+    priority: P1
+    auto_load_if:
+    - .csproj
+    - asp.net
+    - entity-framework
+    dependencies: []
+    tags:
+    - dotnet
+    - csharp
+    - backend
+    version: 1.0.0
+  react_typescript_analysis:
+    path: modules/specialized/{lang}/react-typescript.md
+    tokens: 2000
+    priority: P1
+    auto_load_if:
+    - react
+    - typescript
+    - tsx
+    dependencies: []
+    tags:
+    - react
+    - typescript
+    - frontend
+    version: 1.0.0
+  refactoring_guide:
+    path: modules/core/{lang}/refactoring-guide.md
+    tokens: 600
+    priority: P2
+    auto_load: false
+    dependencies: []
+    tags:
+    - refactoring
+    - code-smells
+    - patterns
+    version: 1.0.0
+  algo_complete:
+    path: ALGO-COMPLETE.md
+    tokens: 8000
+    priority: P1
+    auto_load: false
+    load_on_request: true
+    dependencies: []
+    recommends:
+    - test_generation
+    - performance_analysis
+    - code_quality_patterns
+    tags:
+    - testing
+    - algorithm
+    - validation
+    - mathematical
+    - statistical
+    - property-based
+    version: 2.0.0
+    description: Comprehensive algorithm testing and validation with property-based
+      testing
+  scoring_criteria:
+    path: modules/core/{lang}/scoring-criteria.md
+    priority: P0
+    auto_load_if:
+    - score
+    - health
+    - metrics
+    tags:
+    - core
+    - scoring
+    - metrics
+  cost_analysis:
+    path: modules/core/{lang}/cost-analysis.md
+    priority: P3
+    auto_load_if:
+    - cloud
+    - aws
+    - cost
+    tags:
+    - core
+    - infrastructure
+    - cost
+  resilience_analysis:
+    path: modules/core/{lang}/resilience-analysis.md
+    priority: P3
+    auto_load_if:
+    - microservices
+    - k8s
+    tags:
+    - core
+    - architecture
+    - reliability
+  license_analysis:
+    path: modules/core/{lang}/license-analysis.md
+    priority: P3
+    auto_load_if:
+    - package.json
+    - pom.xml
+    tags:
+    - core
+    - security
+    - legal
+  mobile_native:
+    path: modules/specialized/{lang}/mobile-native.md
+    priority: P2
+    auto_load_if:
+    - react-native
+    - flutter
+    - ios
+    tags:
+    - specialized
+    - mobile
+    - frontend
+  accessibility_fixes:
+    path: modules/guides/{lang}/accessibility-fixes.md
+    priority: P3
+    auto_load_if:
+    - a11y
+    - accessibility
+    tags:
+    - guides
+    - frontend
+    - accessibility
+  database_migration:
+    path: modules/guides/{lang}/database-migration.md
+    priority: P3
+    auto_load_if:
+    - migration
+    - sql
+    - flyway
+    tags:
+    - guides
+    - database
+    - migration
+  performance_optimization:
+    path: modules/guides/{lang}/performance-optimization.md
+    priority: P3
+    auto_load_if:
+    - performance
+    - optimization
+    tags:
+    - guides
+    - performance
+    - optimization
+  security_fixes:
+    path: modules/guides/{lang}/security-fixes.md
+    priority: P3
+    auto_load_if:
+    - security
+    - vulnerability
+    tags:
+    - guides
+    - security
+    - fixes
+  meta_analysis:
+    path: modules/specialized/{lang}/meta-analysis.md
+    priority: P2
+    auto_load_if:
+    - yaml
+    - manifest.yaml
+    - cli
+    - python
+    tags:
+    - specialized
+    - ai
+    - meta
+  growth_strategy:
+    path: modules/specialized/{lang}/growth-strategy.md
+    priority: P3
+    auto_load_if:
+    - manifest.yaml
+    - ai-governance
+    tags:
+    - specialized
+    - governance
+    - framework
+total_modules: 52

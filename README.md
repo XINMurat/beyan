@@ -17,6 +17,19 @@
 
 ---
 
+# 🤖 Beyan v2.0: Agentic Framework (New!)
+
+Beyan has evolved from a prompt library into a **fully autonomous agentic framework**. 
+
+The new **v2.0 Agentic Framework** features:
+- **CLI Analyzer**: Automatic technology discovery and modular prompt compilation.
+- **Semi-Autonomous Agent**: An interactive loop that can Analyze -> Plan -> Code -> Test -> Commit.
+- **Smart Token Management**: Context-aware pruning to fit deep analysis into LLM limits.
+
+👉 **Check out v2.0:** [v2/ Directory](v2/)
+
+---
+
 A structured, battle-tested library of AI prompts for deep technical project analysis. Whether you're inheriting legacy code, conducting technical due diligence, or systematically documenting a system — Beyan gives you a complete analytical framework.
 
 > **Core principle:** "If the engineer who built this system left tomorrow, a new developer should be able to reconstruct it entirely from the analysis output."

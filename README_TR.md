@@ -17,6 +17,19 @@
 
 ---
 
+# 🤖 Beyan v2.0: Agentic Framework (Yeni!)
+
+Beyan, bir prompt kütüphanesinden **tam otonom bir agentic framework** yapısına evrildi.
+
+Yeni **v2.0 Agentic Framework** özellikleri:
+- **CLI Analyzer**: Otomatik teknoloji keşfi ve modüler prompt derleme.
+- **Yarı-Otonom Ajan**: Analiz -> Plan -> Kod -> Test -> Commit döngüsünü yöneten etkileşimli yapı.
+- **Akıllı Token Yönetimi**: Derin analizleri LLM limitlerine sığdıran içerik odaklı budama (pruning).
+
+👉 **v2.0 ile başlayın:** [v2/ Dizini](v2/)
+
+---
+
 Herhangi bir yazılım projesini derin ve sistematik biçimde analiz etmek için hazırlanmış, yapay zeka destekli prompt kütüphanesi. Legacy kodu devralalım, teknik due diligence yapalım veya bir sistemi kapsamlı belgeleyelim — Beyan eksiksiz bir analitik çerçeve sunar.
 
 > **Temel ilke:** "Bu sistemi yazan geliştirici yarın ayrılsa, yerine gelen başka bir mühendis yalnızca analiz çıktılarına bakarak sistemi birebir yeniden yazabilmeli."

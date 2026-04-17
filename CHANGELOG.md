@@ -4,6 +4,21 @@ All notable changes to Beyan are documented here.
 
 ---
 
+## [2.0.0] — 2026-04-18
+### Added
+- **v2.0 Agentic Framework**: A complete autonomous system for repository analysis.
+- CLI analyzer with auto-discovery (`discovery.py`).
+- MANIFEST-driven modular prompt compilation (`compiler.py`).
+- Semi-autonomous agentic loop with human-in-the-loop checkpoints (`orchestrator.py`).
+- OpenAI + Anthropic API clients with exception-based error handling (`api_clients.py`).
+- Priority-based smart token budget management (Auto-pruning P2/P3 modules).
+- Session persistence and resuming capabilities for agentic loops.
+- Git safety branching protocol for destructive operations.
+- Comprehensive pytest suite (31 tests).
+- Professional README and project documentation for v2.
+
+---
+
 ## [1.0.0] — 2026-04-16
 
 ### Initial Release

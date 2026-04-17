@@ -1,0 +1,19 @@
+name: Integrity Check
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  verify:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Run Integrity Verification
+      run: |
+        .\tools\verify_integrity.ps1
+      shell: pwsh
