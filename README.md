@@ -17,16 +17,28 @@
 
 ---
 
-# 🤖 Beyan v2.0: Agentic Framework (New!)
+# 🚀 Beyan v2.0: The Agentic Framework
 
-Beyan has evolved from a prompt library into a **fully autonomous agentic framework**. 
+Beyan has evolved from a static prompt library into a **fully autonomous agentic framework**. Version 2.0 introduces an intelligent orchestration layer that can discover technologies, compile custom prompts, and run interactive analysis-to-fix loops.
 
-The new **v2.0 Agentic Framework** features:
-- **CLI Analyzer**: Automatic technology discovery and modular prompt compilation.
-- **Semi-Autonomous Agent**: An interactive loop that can Analyze -> Plan -> Code -> Test -> Commit.
-- **Smart Token Management**: Context-aware pruning to fit deep analysis into LLM limits.
+### Why v2.0?
+While v1.0 provides the "what" (expert prompts), v2.0 provides the **"how"** (execution). It automates the entire reconnaissance and analysis pipeline, reducing human effort by up to 80%.
 
-👉 **Check out v2.0:** [v2/ Directory](v2/)
+### 🛠️ Core Capabilities
+- **🔍 Intelligent Reconnaissance**: Content-aware fingerprinting to detect 20+ technologies (Python, Go, Node, Flutter, etc.) automatically.
+- **🧩 Dynamic Compilation**: A modular system that loads only relevant analysis modules based on discovered project tags, ensuring high-density context.
+- **🧠 Smart Token Management**: Automatically prunes lower-priority modules to fit deep analysis into LLM context windows without losing critical insights.
+- **🤖 Semi-Autonomous Agent (Mode 3)**: An interactive loop that follows a **Analyze → Plan → Code → Test → Commit** workflow with human-in-the-loop checkpoints.
+- **🛡️ Safety First**: Integrated Git safety branching and confirmation gates for all destructive operations.
+
+### 🚦 Quick Start (v2.0)
+```bash
+cd v2
+pip install -r requirements.txt
+python cli/analyzer.py --target /path/to/project --mode 1 --lang en --api openai
+```
+
+[**Explore v2.0 Documentation & Code**](v2/)
 
 ---
 

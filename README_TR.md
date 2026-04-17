@@ -17,16 +17,28 @@
 
 ---
 
-# 🤖 Beyan v2.0: Agentic Framework (Yeni!)
+# 🚀 Beyan v2.0: Agentic Framework
 
-Beyan, bir prompt kütüphanesinden **tam otonom bir agentic framework** yapısına evrildi.
+Beyan, statik bir prompt kütüphanesinden **tam otonom bir agentic framework** yapısına evrildi. Versiyon 2.0; teknolojileri keşfeden, özel promptlar derleyen ve etkileşimli "analizden-düzeltmeye" döngülerini yöneten akıllı bir orkestrasyon katmanı sunar.
 
-Yeni **v2.0 Agentic Framework** özellikleri:
-- **CLI Analyzer**: Otomatik teknoloji keşfi ve modüler prompt derleme.
-- **Yarı-Otonom Ajan**: Analiz -> Plan -> Kod -> Test -> Commit döngüsünü yöneten etkileşimli yapı.
-- **Akıllı Token Yönetimi**: Derin analizleri LLM limitlerine sığdıran içerik odaklı budama (pruning).
+### Neden v2.0?
+v1.0 "neyin" analiz edileceğini (uzman promptlar) sunarken, v2.0 **"nasıl"** icra edileceğini (execution) sağlar. Tüm keşif ve analiz sürecini otomatikleştirerek insan eforunu %80'e kadar azaltır.
 
-👉 **v2.0 ile başlayın:** [v2/ Dizini](v2/)
+### 🛠️ Temel Yetenekler
+- **🔍 Akıllı Keşif (Reconnaissance)**: 20'den fazla teknolojiyi (Python, Go, Node, Flutter vb.) otomatik tespit eden içerik odaklı parmak izi okuma.
+- **🧩 Dinamik Derleme**: Keşfedilen teknoloji etiketlerine göre sadece ilgili analiz modüllerini yükleyen, bağlam yoğunluğunu maksimize eden modüler yapı.
+- **🧠 Akıllı Token Yönetimi**: Derin analizleri LLM bağlam penceresine sığdırmak için düşük öncelikli modülleri otomatik budayan (pruning) zeka.
+- **🤖 Yarı-Otonom Ajan (Mode 3)**: **Analiz → Plan → Kod → Test → Commit** iş akışını insan onaylı kontrol noktalarıyla yöneten etkileşimli döngü.
+- **🛡️ Önce Güvenlik**: Tüm yıkıcı işlemler için entegre Git güvenli dallanma (branching) ve onay mekanizmaları.
+
+### 🚦 Hızlı Başlangıç (v2.0)
+```bash
+cd v2
+pip install -r requirements.txt
+python cli/analyzer.py --target /path/to/project --mode 1 --lang tr --api openai
+```
+
+[**v2.0 Dokümantasyon ve Kodlarını İncele**](v2/)
 
 ---
 
