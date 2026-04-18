@@ -1,5 +1,0 @@
-cli
-core_prompts
-modules
-tests
-tools
