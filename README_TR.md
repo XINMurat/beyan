@@ -102,6 +102,10 @@ Beyan v2.0, sahada test edilmiş v1.0 prompt ailesinden güç alır. Özel ihtiy
 
 ---
 
+## 📝 Yazılar
+
+- [Tek Komutla Tüm Kod Tabanınızı Analiz Eden Bir AI Ajanı Geliştirdim](https://dev.to/xinmurat_4942570d69/i-built-an-ai-agent-that-analyzes-your-entire-codebase-in-one-command-oil) — Dev.to
+
 ## ⚖️ Lisans
 [MIT](LICENSE) — serbestçe kullanın, değiştirin, dağıtın.
 

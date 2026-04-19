@@ -101,6 +101,10 @@ Beyan v2.0 is powered by the battle-tested v1.0 prompt family. You can still use
 - `.github/`: CI/CD workflows for automated testing.
 
 ---
+## 📝 Articles
+
+- [I Built an AI Agent That Analyzes Your Entire Codebase in One Command](https://dev.to/xinmurat_4942570d69/i-built-an-ai-agent-that-analyzes-your-entire-codebase-in-one-command-oil) — Dev.to
+
 
 ## ⚖️ License
 [MIT](LICENSE) — free to use, modify, and distribute.
